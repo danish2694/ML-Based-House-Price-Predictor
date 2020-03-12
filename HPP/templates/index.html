@@ -1,0 +1,93 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>House Price Prediction</title>
+    <style type="text/css">
+    #bg{
+      background-image: url("{% static 'images/house_image3.jpg' %}");
+      height: 100%;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    </style>
+  </head>
+  <body>
+
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container d-flex justify-content-center">
+        <h1 class="display-4"><b>House Price Prediction</b></h1>
+      </div>
+    </div>
+
+    <div class="container d-flex justify-content-center" id="bg">
+      <form method="post" action="/prediction/" onsubmit="return validateform()" name="myform">{% csrf_token %}
+        <div class="form-group">
+          <label for="formGroupExampleInput" class="ml-2"><b>Area (Square Feet)</label>
+          <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter Area" name="area">
+        </div>
+        <div class="form-group">
+          <label for="formGroupExampleInput2" class="ml-2"><b>BHK</label>
+          <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Enter BHK" name="bhk">
+        </div>
+         <div class="form-group">
+          <label for="formGroupExampleInput3" class="ml-2"><b>Bath</label>
+          <input type="text" class="form-control" id="formGroupExampleInput3" placeholder="Enter Bath" name="bath">
+        </div>
+         <div class="form-group">
+          <label for="formGroupExampleInput4" class="ml-2"><b>Location</label>
+          <input type="text" class="form-control" id="formGroupExampleInput4" placeholder="Enter Location" name="loc">
+        </div>
+        <div class="d-flex justify-content-center">
+          <button type="submit" class="btn btn-success">Success</button>
+        </div>
+        <div class="form-group mt-2">
+          <input type="text" class="form-control" id="formGroupExampleInput5" value="{{data|floatformat:2}} {{unit}}" readonly>
+        </div>
+
+      </form>
+    </div>
+    
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+    <script type="text/javascript">
+      function validateform(){  
+        var ar=document.myform.area.value;
+        var bhk=document.myform.bhk.value;
+        var bth=document.myform.bath.value;
+        var lo=document.myform.loc.value;
+        if (ar==null || ar==""){  
+          alert("Area field is empty"); 
+        return false;  
+        }
+        if (bhk==null || bhk==""){  
+          alert("BHK field is empty"); 
+        return false;  
+        }
+        if (bth==null || bth==""){  
+          alert("Bathroom field is empty"); 
+        return false;  
+        }
+        if (lo==null || lo==""){  
+          alert("Location field is empty"); 
+        return false;  
+        }
+      }
+    </script>
+  </body>
+</html>
