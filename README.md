@@ -8,6 +8,8 @@
 During model building we will cover almost all data science concepts such as data load and cleaning, outlier detection and removal, feature engineering, dimensionality reduction, gridsearchcv for hyperparameter tunning, k fold cross validation etc.
 
 ## Tools
+Following are the tools used in this program:
+
 1) Python
 2) Numpy and Pandas for data cleaning
 3) Matplotlib for data visualization
